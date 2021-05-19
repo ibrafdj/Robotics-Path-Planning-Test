@@ -128,7 +128,7 @@ The implemented algorithm visited around 78.98% of the total nodes in the map. T
 
 Other than the A* algorithm, preliminary tests are done using the D* algorithms that are potentially more efficient than the implemented A* algorithm. 
 
-**Disclaimer**: The test result is done using programs still in development and only serve to highlight potential alternative solutions: 
+**Disclaimer**: The test result is done using programs still in development and only serve to highlight potential alternative solutions.
 
 Result of testing using D* algorithm:
 
