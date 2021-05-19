@@ -12,13 +12,13 @@ python path_planning_test.py
 
 # Scenario
 
-The program will initialize the following maze as a 180x180m^2 2D map:
+The program will initialize the following maze as a 180x180m^2 2D map with a grid size of 1m:
 
 | ![image](https://user-images.githubusercontent.com/72083779/118756724-c0402800-b895-11eb-85b3-66b815376a2c.png) |
 |:--:| 
 |*Figure 1: A 2D map of a maze*|
 
-The red dot shows the start point (-10,-10)m and the magenta dot shows the goal point (160,60)m of the robot. The A* algorithm will search for the shortest path from the start point to the goal point while avoiding obstacles along the way.
+The red dot shows the start point (-10,-10)m and the magenta dot shows the goal point (160,60)m of the robot. The A* algorithm will search for the shortest path from the start point to the goal point while avoiding obstacles along the way. The robot has a radius of 1m and/
 
 # A* Algorithm
 ## Definition
@@ -77,7 +77,7 @@ The A* algorithm is implemented in Python based on the open-source [PythonRoboti
 The process within the program can be divided into three main steps:
 * Initialization
 * Path Finding
-    * Grid Search
+    * Node Search
     * Path Calculation
 * Map Plotting
 
@@ -87,15 +87,17 @@ The initialization process includes the definition of the Node class with its fo
 
 ### Path Finding
 
-#### Grid Search
+#### Node Search
 
 In this scenario, the nodes of a graph is represented as a 1x1 m^2 grid on the map. Each node has 8 possible neighboring nodes on the following directions: up, down, left, right, up left, up right, down left, down right.
 
-| ![image](https://user-images.githubusercontent.com/72083779/118759625-912cb500-b89b-11eb-8626-2eb8639a5e4e.png) |
+| ![image](https://user-images.githubusercontent.com/72083779/118779158-fa6cf200-b8b4-11eb-85da-15cd975ffa88.png) |
 |:--:| 
-|*Figure 4: The possible neighboring nodes (Green) of the current node at (x,y) (Blue)*| 
+|*Figure 4: Flowchart of the program*| 
 
-To simulate the robot's limited awareness of its surroundings, every grid of the 180x180 m^2 map is not be instantly initialized as nodes at the start. Instead, the program will just start the graph with two unconnected nodes: the start node and the goal node. From the start node, new neighboring nodes will be continually added to the graph as the current node moves from one node to next. When the shortest connection is formed in the graph between the start node and the goal node (The current node = goal node), the iteration stops and the program will produce the resulting shortest path.  
+To simulate the robot's limited awareness of its surroundings, every grid of the 180x180 m^2 map is not be instantly initialized as nodes at the start. Instead, the program will just start the graph with two unconnected nodes: the start node and the goal node. From the start node, new neighboring nodes will be continually added to the graph as the current node moves from one node to next. The current node will continue iteratively visit the node with the lowest f(n) value. Stored cost value and previous node address of existing nodes will also be replaced if the current cost to the next node is lower.
+
+When the shortest connection is formed in the graph between the start node and the goal node (The current node = goal node), the iteration stops and the program will produce the resulting shortest path.  
 
 #### Path Calculation
 
@@ -124,12 +126,16 @@ The implemented algorithm visited around 78.98% of the total nodes in the map. T
 
 # Possible Alternate Solutions
 
-Other than the A* algorithm, several preliminary tests are done using other algorithms that are potentially more efficient than the implemented A* algorithm. Keep in mind these test results are done using programs still in development and only serve to highlight potential alternative solutions for this program: 
+Other than the A* algorithm, preliminary tests are done using the D* algorithms that are potentially more efficient than the implemented A* algorithm. 
+
+**Disclaimer**: The test result is done using programs still in development and only serve to highlight potential alternative solutions: 
 
 Result of testing using D* algorithm:
 
 | ![image](https://user-images.githubusercontent.com/72083779/118774368-f4c0dd80-b8af-11eb-9cf5-0dd9f139ea91.png)|
 |:--:| 
 |*Figure 6: Test results of implementing the D* path-finding algorithm*| 
+
+The above result was completed in 14.809 s. Notable issues with this result includes the path being too close to the obstacles, not giving enough room for the diameter of the robot.
 
 
