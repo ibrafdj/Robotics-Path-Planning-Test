@@ -70,8 +70,6 @@ The A* algorithm executes the following steps to determine the minimum path betw
 
 The A* algorithm is implemented in Python based on the open-source [PythonRobotics](https://github.com/AtsushiSakai/PythonRobotics) library.
 
-### Flowchart
-
 | ![image](https://user-images.githubusercontent.com/72083779/118759625-912cb500-b89b-11eb-8626-2eb8639a5e4e.png) |
 |:--:| 
 |*Figure 3: The possible neighboring nodes (Green) of the current node at (x,y) (Blue)*| 
@@ -117,21 +115,21 @@ The shortest path between the start and goal point is as follows:
 
 The program also outputs the following data:
 - Number of nodes visited to producte the result: **6398 nodes**
-- Shortest path distance from start point to goal point: **134.71m**
-- Total time: **aaa**
+- Shortest path distance from start point to goal point: **203.238 m**
+- Total time: **171.684 s** (Results may vary based on machine performance)
 
 # Evaluation
 
-
+The implemented algorithm visited around 78.98% of the total nodes in the map. The performance of the program visibly deteriorated over time as more and more visited nodes are stored and took almost 3 minutes to run on the creator's machine. Based on this data and the results shown in Figure 5, it can be concluded that there is a need **to find a more efficient solution** than the current implemented algorithm.
 
 # Possible Alternate Solutions
 
-While developing the A* algorithm in the program, a possible more eficient solution to the maze was also tested. The D* algorithm was tested but has not been fully implemented to the program. Initial testing with the D* algorithm indicated that the algorithm could be faster and less resource intensive than using A*.
+Other than the A* algorithm, several preliminary tests are done using other algorithms that are potentially more efficient than the implemented A* algorithm. Keep in mind these test results are done using programs still in development and only serve to highlight potential alternative solutions for this program: 
 
-The resulting shortest path between the start point to the goal point using the D* algorithm is as follows:
+Result of testing using D* algorithm:
 
-| ![image](https://user-images.githubusercontent.com/72083779/118769306-39e21100-b8aa-11eb-9005-7da7d0f139c6.png) |
+| ![image](https://user-images.githubusercontent.com/72083779/118774368-f4c0dd80-b8af-11eb-9cf5-0dd9f139ea91.png)|
 |:--:| 
-|*Figure 5: The shortest path between the start and goal point (Red Line) and the all the visited nodes in the maze (Blue X)*| 
+|*Figure 6: Test results of implementing the D* path-finding algorithm*| 
 
 
