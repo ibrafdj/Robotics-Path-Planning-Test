@@ -2,10 +2,7 @@
 
 This is a python program that can test and visualize the A* path planning algorithnm to navigate a robot between two points in a 2D map.
 
-# Dependencies
-* matplotlib
-
-# How-to-run
+# How to Run The Program
 * Install python from [here](https://www.python.org/downloads/)
 * Install matplotlib from [here](https://matplotlib.org/stable/users/installing.html)
 * Open the program directory in terminal or command prompt and run the program with the following command:
@@ -15,18 +12,16 @@ python path_planning_test.py
 
 # Scenario
 
-The program will initialize the following maze as a 2D map:
+The program will initialize the following maze as a 180x180 m^2 2D map:
 
 | ![image](https://user-images.githubusercontent.com/72083779/118756724-c0402800-b895-11eb-85b3-66b815376a2c.png) |
 |:--:| 
 |*Figure 1: A 2D map of a maze*|
 
-The red dot shows the start point and the magenta dot shows the goal point of the robot. The A* algorithm will search the maze 
+The red dot shows the start point and the magenta dot shows the goal point of the robot. The A* algorithm will search for the shortest path from the start point to the goal point while avoiding obstacles along the way.
 
-# Description
-
-## A* Algorithm
-### Definition
+# A* Algorithm
+## Definition
 A* is a pathfinding algorithm that can find the shortest path between two nodes in a graph. 
 
 A* chooses the path with the minimum value of the function f(n) as defined as follows:
@@ -43,7 +38,7 @@ Where:
 |*Figure 1: An example of a weighted graph*| 
 |*Source: [isaaccomputerscience.org](https://isaaccomputerscience.org/concepts/dsa_search_a_star)*|
   
-### How it works
+## How it works
 The A* algorithm executes the following steps to determine the minimum path between two nodes:
 
 1. Insert all nodes into a set of unvisited nodes called **open set**
@@ -71,14 +66,52 @@ The A* algorithm executes the following steps to determine the minimum path betw
     * Taking the address of the following previous nodes and storing it in a list until we reach the start node
     * The completed list contains the ordered minimum path from the start node to the goal node
 
+## Implementation
 
-## Results
+The A* algorithm is implemented in Python based on the open-source [PythonRobotics](https://github.com/AtsushiSakai/PythonRobotics) library.
 
-# To-do
+### Flowchart
 
-# Additional References to Learn A*
+### Initialization
 
-Additional video references that can be accessed to learn A*:
-* [A* Search - John Levine](https://www.youtube.com/watch?v=ySN5Wnu88nE)
-* [A* (A Star) Search Algorithm - Computerphile](https://www.youtube.com/watch?v=ySN5Wnu88nE)
+The initialization process includes the definition of AStar and Node classes with its following methods, variable and constants declarations, and setting up the coordinates for the obstacles, start point, goal point, and other objects on the map.
+
+### Path Finding
+
+#### Grid Search
+
+In this scenario, the nodes of a graph is represented as a 1x1 m^2 grid on the map. Each node has 8 possible neighboring nodes on the following directions: up, down, left, right, up left, up right, down left, down right.
+
+| ![image](https://user-images.githubusercontent.com/72083779/118759625-912cb500-b89b-11eb-8626-2eb8639a5e4e.png) |
+|:--:| 
+|*Figure X: The possible neighboring nodes (Green) of the current node at (x,y) (Blue)*| 
+
+To simulate the robot's limited awareness of its surroundings, every grid of the 180x180 m^2 map is not be instantly initialized as nodes at the start. Instead, the program will just start the graph with two unconnected nodes: the start node and the goal node. From the start node, new neighboring nodes will be continually added to the graph as the current node moves from one node to next. When the shortest connection is formed in the graph between the start node and the goal node, the iteration stops and the program will produce the resulting shortest path.  
+
+#### Resulting Path
+
+
+
+### Map Plotting
+
+
+# Results
+
+The shortest path between the start and goal point is as follows:
+
+
+| ![image](https://user-images.githubusercontent.com/72083779/118760418-f92fcb00-b89c-11eb-8579-fc00705c9542.png) |
+|:--:| 
+|*Figure 5: The shortest path between the start and goal point (Red Line) and the all the visited nodes in the maze (Blue X)*| 
+
+The average total node visited to producte the result is **2771 nodes** and the shortest path distance from start point to goal point is **134.71m**
+
+
+# Future Work
+
+While developing the A* algorithm in the program, a possible more eficient solution to the maze was also tested. The D* algorithm was tested but has not been fully implemented to the program. Initial testing with the D* algorithm revealed that it found the minimal path faster than the A* algorithm. 
+
+The resulting shortest path between the start point to the goal point using the D* algorithm is as follows:
+
+
 
