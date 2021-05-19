@@ -1,2 +1,20 @@
 # Robotics-Path-Planning-Test
-Code for testing robotics path planning program in Python
+
+## About
+
+## How-to-run
+
+## Description
+### Robot Path Planning
+
+### A* Algorithm
+#### How it works
+
+
+#### Flowchart
+
+### Test Scenario
+
+### Results
+
+### Reccommendations
