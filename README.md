@@ -70,9 +70,9 @@ The A* algorithm executes the following steps to determine the minimum path betw
 
 The A* algorithm is implemented in Python based on the open-source [PythonRobotics](https://github.com/AtsushiSakai/PythonRobotics) library.
 
-| ![image](https://user-images.githubusercontent.com/72083779/118759625-912cb500-b89b-11eb-8626-2eb8639a5e4e.png) |
+| ![image](https://user-images.githubusercontent.com/72083779/118779158-fa6cf200-b8b4-11eb-85da-15cd975ffa88.png) |
 |:--:| 
-|*Figure 3: The possible neighboring nodes (Green) of the current node at (x,y) (Blue)*| 
+|*Figure 3: Flowchart of the program*|
 
 The process within the program can be divided into three main steps:
 * Initialization
@@ -91,9 +91,9 @@ The initialization process includes the definition of the Node class with its fo
 
 In this scenario, the nodes of a graph is represented as a 1x1 m^2 grid on the map. Each node has 8 possible neighboring nodes on the following directions: up, down, left, right, up left, up right, down left, down right.
 
-| ![image](https://user-images.githubusercontent.com/72083779/118779158-fa6cf200-b8b4-11eb-85da-15cd975ffa88.png) |
+| ![image](https://user-images.githubusercontent.com/72083779/118759625-912cb500-b89b-11eb-8626-2eb8639a5e4e.png) |
 |:--:| 
-|*Figure 4: Flowchart of the program*| 
+|*Figure 4: The possible neighboring nodes (Green) of the current node at (x,y) (Blue)*| 
 
 To simulate the robot's limited awareness of its surroundings, every grid of the 180x180 m^2 map is not be instantly initialized as nodes at the start. Instead, the program will just start the graph with two unconnected nodes: the start node and the goal node. From the start node, new neighboring nodes will be continually added to the graph as the current node moves from one node to next. The current node will continue iteratively visit the node with the lowest f(n) value. Stored cost value and previous node address of existing nodes will also be replaced if the current cost to the next node is lower.
 
